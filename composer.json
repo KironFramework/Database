@@ -1,0 +1,19 @@
+{
+    "name": "xirion/database",
+    "description": "Database component of xirion framework",
+    "require-dev": {
+        "phpunit/phpunit": "^6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xirion\\Database\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "NielsTRS",
+            "email": "niels@kironframework.com"
+        }
+    ],
+    "license": "MIT"
+}
