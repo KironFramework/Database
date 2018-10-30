@@ -10,21 +10,40 @@
 	namespace Xirion\Database\Drivers\Mysql;
 
 	use \PDO;
-	use Xirion\Database\Core\Driver\BaseDriver;
-	use Xirion\Database\Core\Exceptions\DatabaseException;
+	use Xirion\Database\Drivers\Mysql\Components\Builder;
+	use Xirion\Database\Interfaces\DriverInterface;
 
 	/**
 	 * Class Driver
 	 *
 	 * @package Xirion\Database\Drivers\Mysql
 	 */
-	class Driver extends BaseDriver
+	class Driver implements DriverInterface
 	{
+
+		/**
+		 * @var PDO
+		 */
+		private $_pdo;
 
 		/**
 		 * @var
 		 */
-		private $_pdo;
+		public static $instance;
+
+		/**
+		 * @param array $db
+		 *
+		 * @return mixed|Driver
+		 */
+		public static function getInstance(array $db)
+		{
+			if (is_null(self::$instance)) {
+				self::$instance = new Driver($db);
+			}
+
+			return self::$instance;
+		}
 
 		/**
 		 * Driver constructor.
@@ -33,35 +52,18 @@
 		 */
 		public function __construct(array $db)
 		{
-			$this->getDb($db);
-		}
-
-		/**
-		 * @param string $component
-		 *
-		 * @return mixed
-		 * @throws DatabaseException
-		 */
-		public function loadComponent(string $component)
-		{
-			$componentClass = 'Xirion\Database\Drivers\Mysql\Components\\'
-				. $component;
-			if (class_exists($componentClass)) {
-				return new $componentClass($this->_pdo);
-			} else {
-				throw new DatabaseException("The component $component in the Mysql driver doesn't exists");
-			}
-		}
-
-		/**
-		 * @param array $db
-		 */
-		public function getDb(array $db)
-		{
 			$this->_pdo = new PDO('mysql:host=' . $db[0] . ';dbname=' . $db[1]
 				. ';charset=' . $db[2] . '', $db[3], $db[4]);
 			$this->_pdo->setAttribute(PDO::ATTR_ERRMODE,
 				PDO::ERRMODE_EXCEPTION);
+		}
+
+		/**
+		 * @return mixed|Builder
+		 */
+		public function getBuilder()
+		{
+			return new Builder($this->_pdo);
 		}
 
 	}

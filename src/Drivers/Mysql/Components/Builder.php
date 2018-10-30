@@ -9,8 +9,8 @@
 
 	namespace Xirion\Database\Drivers\Mysql\Components;
 
-	use Xirion\Database\Core\Driver\Components\BaseBuilder;
-	use Xirion\Database\Core\Exceptions\DatabaseException;
+	use PDO;
+	use Xirion\Database\Drivers\Base\BaseBuilder;
 
 	/**
 	 * Class Builder
@@ -19,5 +19,9 @@
 	 */
 	class Builder extends BaseBuilder
 	{
+		public function __construct(PDO $pdo)
+		{
+			parent::__construct($pdo);
+		}
 
 	}

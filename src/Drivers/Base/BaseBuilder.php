@@ -7,17 +7,17 @@
 	 * Time: 19:54
 	 */
 
-	namespace Xirion\Database\Core\Driver\Components;
+	namespace Xirion\Database\Drivers\Base;
 
 
-	use Xirion\Database\Core\Exceptions\DatabaseException;
-	use Xirion\Database\Core\Interfaces\BuilderInterface;
+	use Xirion\Database\Exceptions\DatabaseException;
+	use Xirion\Database\Interfaces\BuilderInterface;
 	use \PDO;
 
 	/**
 	 * Class BaseBuilder
 	 *
-	 * @package Xirion\Database\Core\Driver\Components
+	 * @package Xirion\Database\Base\Driver\Components
 	 */
 	abstract class BaseBuilder implements BuilderInterface
 	{
@@ -223,8 +223,11 @@
 		 * @return mixed|void
 		 * @throws DatabaseException
 		 */
-		public function createTable(string $table, string $columns, string $types)
-		{
+		public function createTable(
+			string $table,
+			string $columns,
+			string $types
+		) {
 			$nb_columns = count($columns);
 			$nb_types = count($types);
 			$str = '';
@@ -263,8 +266,11 @@
 		 *
 		 * @return mixed|void
 		 */
-		public function createColumn(string $table, string $column, string $type)
-		{
+		public function createColumn(
+			string $table,
+			string $column,
+			string $type
+		) {
 			$this->_query = 'ALTER TABLE ' . $table . ' ADD ' . $column . ' '
 				. $type;
 		}
@@ -285,7 +291,7 @@
 		 */
 
 		/**
-		 * @param string     $sql
+		 * @param string $sql
 		 * @param array|null $params
 		 *
 		 * @return mixed|void

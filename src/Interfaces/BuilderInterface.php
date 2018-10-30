@@ -7,13 +7,13 @@
 	 * Time: 20:04
 	 */
 
-	namespace Xirion\Database\Core\Interfaces;
+	namespace Xirion\Database\Interfaces;
 
 
 	/**
 	 * Interface BuilderInterface
 	 *
-	 * @package Xirion\Database\Core\Interfaces
+	 * @package Xirion\Database\Base\Interfaces
 	 */
 	interface BuilderInterface
 	{
