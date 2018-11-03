@@ -9,6 +9,9 @@
 
 	namespace Xirion\Database;
 
+	use Xirion\DependencyInjector\Container;
+	use Xirion\DependencyInjector\Factory;
+
 	/**
 	 * Class Database
 	 *
@@ -22,10 +25,9 @@
 		 */
 		private $_drivers = [];
 		/**
-		 * @var array
+		 * @var Container
 		 */
-		private $_db = [];
-
+		private $_container;
 		/**
 		 * @var
 		 */
@@ -36,10 +38,10 @@
 		 *
 		 * @return Database
 		 */
-		public static function getInstance(array $db)
+		public static function getInstance()
 		{
 			if (is_null(self::$instance)) {
-				self::$instance = new Database($db);
+				self::$instance = new Database();
 			}
 
 			return self::$instance;
@@ -50,29 +52,40 @@
 		 *
 		 * @param array $db
 		 */
-		public function __construct(array $db)
+		public function __construct()
 		{
-			$this->_db = $db;
+			$this->_container = Container::getInstance();
 		}
+
 
 		/**
 		 * @param string $name
 		 *
-		 * @return mixed
+		 * @return mixed|object
+		 * @throws \ReflectionException
+		 * @throws \Xirion\Bags\Exceptions\BagException
+		 * @throws \Xirion\Bags\Exceptions\BagNotFoundException
 		 */
 		public function getDriver(string $name)
 		{
-			return $this->_drivers[$name]::getInstance($this->_db);
+			$rule = Factory::makeRule(true, false, false,
+				['db' => $this->_drivers[$name]['db']]);
+			$this->_container->attachRule($this->_drivers[$name]['driver'],
+				$rule);
+			return $this->_container->getClass($this->_drivers[$name]['driver']);
 		}
 
 		/**
 		 * @param string $name
 		 * @param        $driver
 		 */
-		public function addDriver(string $name, $driver)
+		public function addDriver(string $name, string $driver, array $db)
 		{
 			if ($this->driverExists($name) === false) {
-				$this->_drivers[$name] = $driver;
+				$this->_drivers[$name] = array(
+					'driver' => $driver,
+					'db' => $db
+				);
 			}
 		}
 

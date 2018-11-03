@@ -1,0 +1,145 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "92210fde7a0e4f9f371e6ae60b5a0ef6",
+    "content-hash": "d4f62cc804d5a34fb0e786559fcf0b83",
+    "packages": [
+        {
+            "name": "psr/container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "time": "2017-02-14 16:28:37"
+        },
+        {
+            "name": "xirion/bags",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/XirionFramework/Bags.git",
+                "reference": "b130e85e7e22b7c1bb6afb944a115df21a862337"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/XirionFramework/Bags/zipball/b130e85e7e22b7c1bb6afb944a115df21a862337",
+                "reference": "b130e85e7e22b7c1bb6afb944a115df21a862337",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "1.0.*"
+            },
+            "type": "component",
+            "autoload": {
+                "psr-4": {
+                    "Xirion\\Bags\\": "src",
+                    "Xirion\\Bags\\Exceptions\\": "src/Exceptions",
+                    "Xirion\\Bags\\Interfaces\\": "src/Interfaces",
+                    "Xirion\\Bags\\Traits\\": "src/Traits"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaktus",
+                    "email": "kaktus@kironframework.com"
+                }
+            ],
+            "description": "Bag component of xirion framework",
+            "time": "2018-11-02 18:16:50"
+        },
+        {
+            "name": "xirion/dependency-injector",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/XirionFramework/DependencyInjector.git",
+                "reference": "9727a5a42e229e8a9d4450b301ae340a5c96c881"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/XirionFramework/DependencyInjector/zipball/9727a5a42e229e8a9d4450b301ae340a5c96c881",
+                "reference": "9727a5a42e229e8a9d4450b301ae340a5c96c881",
+                "shasum": ""
+            },
+            "require": {
+                "xirion/bags": "*"
+            },
+            "type": "component",
+            "autoload": {
+                "psr-4": {
+                    "Xirion\\DependencyInjector\\": "src",
+                    "Xirion\\DependencyInjector\\Resolver\\": "src/Resolver",
+                    "Xirion\\DependencyInjector\\Rule\\": "src/Rule"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaktus",
+                    "email": "kaktus@xirion.fr"
+                }
+            ],
+            "description": "Dependency injector component of xirion framework",
+            "time": "2018-11-03 13:45:20"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

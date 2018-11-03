@@ -6,6 +6,9 @@
             "Xirion\\Database\\": "src/"
         }
     },
+    "require" : {
+        "xirion/dependency-injector": "*"
+    },
     "authors": [
         {
             "name": "NielsTRS",
