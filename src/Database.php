@@ -68,11 +68,9 @@
 		 */
 		public function getDriver(string $name)
 		{
-			$rule = Factory::makeRule(true, false, false,
-				['db' => $this->_drivers[$name]['db']]);
-			$this->_container->attachRule($this->_drivers[$name]['driver'],
-				$rule);
-			return $this->_container->getClass($this->_drivers[$name]['driver']);
+			return $this->_container->attachRule($this->_drivers[$name]['driver'],
+				Factory::makeRule(true, false,	['db' => $this->_drivers[$name]['db']]))
+				->getClass($this->_drivers[$name]['driver']);
 		}
 
 		/**
